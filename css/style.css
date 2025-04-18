@@ -64,6 +64,20 @@ p{
     background: var(--nav-bg-color);
     border-radius: 5rem;
     z-index: 100;
+    animation: animate-nav 1s ease-in-out backwards;
+    animation-delay: 4s;
+}
+
+@keyframes animate-nav{
+    0%{
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    100%{
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 .nav .nav-list{
@@ -121,9 +135,21 @@ a:hover .tooltip,
     height: 100%;
     transform-style: preserve-3d;
     transform-origin: 50% 50% -50vw;
-    transform: rotateY(-270deg);
+    transform: rotateY(0deg);
+    transition: 2s;
+    animation: animate-cube 4s ease-in-out backwards;
 }
 
+/* starting rotaion need only pass below keyframe content */
+@keyframes animate-cube {
+    0%{
+        transform: scale(0) rotateY(-360deg);
+    }
+
+    100%{
+        transform: scale(1) rotateY(0deg);
+    }
+}
 .section{
     position: absolute;
     width: 100%;
@@ -149,6 +175,24 @@ a:hover .tooltip,
 .section.portfolio{
     transform: translateX(-50vw) translateZ(-50vw) rotateY(-90deg);
 }
+
+.section.contact{
+    visibility: hidden;
+    transition-delay: .5s;
+}
+
+.section.contact.active{
+    visibility: visible;
+}
+
+.section.contact.action-contact{
+    transition-delay: 1.5s;
+}
+
+.section.contact.action-contact.active{
+    transition-delay: 0s;
+}
+
 .home,
 .about {
     display: flex;
@@ -485,4 +529,215 @@ a:hover .tooltip,
 
 .portfolio-item .work-icon a:nth-child(1){
     transform: rotate(135deg);
+}
+
+.portfolio-item .service-icon{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.portfolio-item .service-icon .icon{
+    font-size: 5rem;
+    margin-left: -.3rem;
+    transition: .3s;
+}
+
+.portfolio-item:hover .service-icon .icon{
+    color: var(--main-color);
+}
+
+.portfolio-item:hover .service-icon a{
+    background: var(--main-color);
+}
+
+.portfolio-item .service-icon a i{
+    transform: rotate(-135deg);
+    transition: .3s;
+}
+
+.portfolio-item .service-icon a:hover i{
+    transform: rotate(-180deg);
+}
+.portfolio-box.service .portfolio-item h4{
+    transition: .3s;
+}
+
+.portfolio-box.service .portfolio-item:hover h4{
+    color: var(--main-color);
+}
+
+.contact{
+    padding-top: 2rem;
+    padding-bottom: 18rem;
+}
+
+.contact-wrapper{
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.contact-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70rem;
+}
+
+.contact-form h3{
+    font-size: 3rem;
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.contact-form .field-box{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.contact-form .field-box input,
+.contact-form .field-box textarea{
+    flex: 1 1 30rem;
+    padding: 2rem;
+    background: var(--third-bg-color);
+    border-radius: .6rem;
+    font-size: 1.6rem;
+    color: var(--white-color);
+}
+
+.contact-form .field-box textarea{
+    height: 20rem;
+    resize: none;
+}
+
+.contact-form .contact-btn{
+    margin-top: 2rem;
+}
+
+.contact-form .contact-btn .btn{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1200px) {
+    html{
+        font-size: 55%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .section{
+        padding: 0 4%;
+    }
+
+    .resume,
+    .portfolio{
+        padding-top: 1.5rem;
+        padding-bottom: 27rem;
+    }
+
+    .contact{
+        padding-top: 1.5rem;
+        padding-bottom: 18rem;
+    }
+}
+
+@media screen and (max-width: 768px){
+    html{
+        font-size: 50%;
+    }
+
+    .nav{
+        bottom: 0;
+    }
+
+    .home,
+    .about{
+        flex-direction: column-reverse;
+        justify-content: center;
+        gap: 2rem;
+        padding-bottom: 6rem;
+    }
+
+    .about{
+        flex-direction: column;
+    }
+
+    .img-box{
+        width: 35rem;
+        height: 35rem;
+    }
+
+    .resume,
+    .portfolio{
+        padding-bottom: 25rem;
+    }
+
+    .contact{
+        padding-bottom: 16rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .resume,
+    .portfolio{
+        padding-top: 1rem;
+        padding-bottom: 22rem;
+    }
+
+    .tab-box{
+        margin-top: 0;
+    }
+
+    .contact{
+        padding-top: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .nav{
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .home-info,
+    .about-info{
+        text-align: center;
+    }
+
+    .home-info h1{
+        font-size: 5rem;
+    }
+
+    .home-info .btn-sci{
+        flex-direction: column-reverse;
+    }
+
+    .home-info .btn-sci .sci{
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .img-box{
+        width: 30rem;
+        height: 30rem;
+    }
+
+    .about-info .title{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 350px){
+    .img-box{
+        width: 25rem;
+        height: 25rem;
+    }
+
+    .tab-list h3{
+        font-size: 2.3rem;
+    }
 }
