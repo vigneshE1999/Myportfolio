@@ -59,3 +59,12 @@ portfolioLists.forEach((list, idx) => {
 setTimeout(() => {
     sections[4].classList.remove('active');
 }, 1500);
+
+function toggleMoreAbout() {
+    var moreAbout = document.getElementById('more-about');
+    if (moreAbout.style.display === 'none' || moreAbout.style.display === '') {
+      moreAbout.style.display = 'block';
+    } else {
+      moreAbout.style.display = 'none';
+    }
+  }
